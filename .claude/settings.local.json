@@ -9,7 +9,8 @@
       "Bash(code --install-extension:*)",
       "Bash(code --list-extensions:*)",
       "Bash(code --uninstall-extension:*)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(del \"c:\\\\Users\\\\fremo\\\\Desktop\\\\fraudGPT-main\\\\tools\\\\glob.py\")"
     ]
   }
 }

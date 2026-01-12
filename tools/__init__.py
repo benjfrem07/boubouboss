@@ -6,7 +6,6 @@ from .read import ReadTool
 from .write import WriteTool
 from .edit import EditTool
 from .bash import BashTool
-from .glob import GlobTool
 from .grep import GrepTool
 
 __all__ = [
@@ -14,6 +13,5 @@ __all__ = [
     'WriteTool',
     'EditTool',
     'BashTool',
-    'GlobTool',
     'GrepTool'
 ]

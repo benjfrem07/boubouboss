@@ -10,7 +10,7 @@ class BashTool:
     """Tool for executing bash/shell commands"""
 
     name = "bash"
-    description = "Execute shell commands in the system"
+    description = "Execute shell commands. On Windows, uses PowerShell. On Linux/Mac, uses bash. Use appropriate commands for the detected OS."
 
     parameters = {
         "type": "object",
@@ -48,12 +48,20 @@ class BashTool:
         """
         try:
             # Determine shell based on OS
-            if os.name == 'nt':  # Windows
-                shell_cmd = ['cmd', '/c', command]
+            if os.name == 'nt':  # Windows - use PowerShell for better compatibility
+                # Use PowerShell with proper encoding
+                shell_cmd = [
+                    'powershell', '-NoProfile', '-NonInteractive',
+                    '-ExecutionPolicy', 'Bypass', '-Command', command
+                ]
                 use_shell = False
+                # Set encoding for Windows
+                env = os.environ.copy()
+                env['PYTHONIOENCODING'] = 'utf-8'
             else:  # Unix/Linux/Mac
                 shell_cmd = command
                 use_shell = True
+                env = None
 
             # Execute command
             result = subprocess.run(
@@ -62,7 +70,10 @@ class BashTool:
                 capture_output=True,
                 text=True,
                 timeout=timeout,
-                shell=use_shell
+                shell=use_shell,
+                env=env if os.name == 'nt' else None,
+                encoding='utf-8',
+                errors='replace'
             )
 
             return {

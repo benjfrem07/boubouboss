@@ -6,7 +6,7 @@ import glob as glob_module
 from typing import Dict, Any, List
 
 
-class GlobTool:
+class FileFinderTool:
     """Tool for finding files using glob patterns"""
 
     name = "glob"

@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(npm run compile:*)",
+      "Bash(npm run package:*)",
+      "Bash(where:*)",
+      "Bash(where inkscape)",
+      "Bash(code --install-extension:*)",
+      "Bash(code --list-extensions:*)",
+      "Bash(code --uninstall-extension:*)",
+      "Bash(python:*)"
+    ]
+  }
+}
